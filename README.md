@@ -1,3 +1,8 @@
+# Compiling directives
+Make
+st-flash write 'prog.bin' 0x8000000
+Make clean
+
 # Led Counter STM32F103C8T6 baremetal
 
 El código alojado en este repositorio se emplea como base para desarrollar proyectos de software *baremetal*, escritos desde cero en lenguaje arm, bajo la sintaxis del GNU Assembler (GAS). El término «programación *baremetal*» hace referencia al hecho de desarrollar programas que serán ejecutados en un microcontrolador (µC) sin asistencia de un sistema operativo u otra capa de software que abstraiga la complejidad del hardware. Este tipo de programación se emplea para desarrollar aplicaciones de alto rendimiento que aprovechan al máximo los limitados recursos de cómputo propios de un µC. 
