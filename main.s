@@ -26,13 +26,13 @@ __main:
         mov     r3, #0x8                                @ loads 8 in r1 to enable clock in port B (IOPB bit)
         str     r3, [r0, RCC_APB2ENR_OFFSET]                                @ M[RCC_APB2ENR] gets 8
 
-        # set pin 8 as digital output
+        # set pin 8-15 as digital output
         ldr     r0, =GPIOB_BASE                      @ moves address of GPIOB_CRH register to r0
         ldr     r3, =0x33333333                         @ PB15 output push-pull, max speed 50 MHz
         str     r3, [r0, GPIOx_CRH_OFFSET]                                @ M[GPIOB_CRH] gets 
 
-        # set pin 0 as digital input
-        ldr     r3, =0x33444448                         @ PB0: input
+        # set pin 6-7 as digital input and pin 0 and 3 as digital input
+        ldr     r3, =0x33448448                         @ PB0: input
         str     r3, [r0, GPIOx_CRL_OFFSET]
         # conf
         mov     r3, #0
@@ -51,8 +51,8 @@ loop:
         bne     _check
         ldr     r0, =GPIOB_BASE
         add     r0, GPIOx_IDR_OFFSET
-        mov     r1, #1
-        mov     r2, #2
+        mov     r1, #3
+        mov     r2, #8
         bl      is_button_pressed
         cmp     r0, #0
         bne     _sub
@@ -61,8 +61,8 @@ loop:
 _check:
         ldr     r0, =GPIOB_BASE
         add     r0, GPIOx_IDR_OFFSET
-        mov     r1, #1
-        mov     r2, #2
+        mov     r1, #3
+        mov     r2, #8
         bl      is_button_pressed
         cmp     r0, #0
         bne     _stop
@@ -83,12 +83,13 @@ _sub:
         lsls     r3, r3, #6
         b       ep     
 
-_on:    mov     r3, 0x100
 ep:     ldr     r0, =GPIOB_BASE
         str     r3, [r0, GPIOx_ODR_OFFSET]
         mov     r0, #1000
         bl      delay
         b       loop
+
+
 
 
 
