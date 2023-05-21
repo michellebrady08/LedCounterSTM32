@@ -33,7 +33,11 @@ Se hace una comparacion para determinar el valor retornado por la función, en c
 
 La lógica de los botones se puede apreciar mejor en el siguiente diagrama.
 
-![image](https://github.com/michellebrady08/LedCounterSTM32/assets/110513243/6c9cc03c-74f4-4909-bf3c-8d39dd4acf7e)
+![image](https://github.com/michellebrady08/LedCounterSTM32/assets/110513243/866f759d-b1eb-4fc0-ac40-bd4e99122731)
+
+# Diagrama de conecciones
+
+![L5](https://github.com/michellebrady08/LedCounterSTM32/assets/110513243/9372d369-8782-4d6d-8e1a-e1be387b2de4)
 
 # Compiling directives
 Make
